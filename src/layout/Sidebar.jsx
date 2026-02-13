@@ -6,12 +6,14 @@ import {
   Calendar,
   Ticket,
   Users,
-  DollarSign,
+  Coins as DollarSign,
   Leaf,
   Bot,
   Menu,
   X
 } from 'lucide-react';
+import logo from '../assets/fest_fiti_black_logo.png';
+import logoWithName from '../assets/fest_fiti_name_logo_black.png';
 
 const Sidebar = ({ isCollapsed, isMobile, closeSidebar }) => {
   const navigate = useNavigate();
@@ -84,17 +86,21 @@ const Sidebar = ({ isCollapsed, isMobile, closeSidebar }) => {
       <div className="p-6 border-b border-gray-200">
         <div className="flex items-center justify-between">
           <div className="flex items-center space-x-3">
-            <div className="w-8 h-8 bg-primary-600 rounded-lg flex items-center justify-center">
-              <span className="text-white font-bold text-lg">F</span>
-            </div>
-            {(!isCollapsed && !isMobile) && (
-              <div>
-                <h1 className="text-xl font-bold text-gray-900">FestHub</h1>
-                <p className="text-xs text-gray-500">Event Management</p>
-              </div>
+            {(!isCollapsed && !isMobile) ? (
+              <img
+                src={logoWithName}
+                alt="FestFiti"
+                className="h-10 object-contain"
+              />
+            ) : (
+              <img
+                src={logo}
+                alt="FestFiti"
+                className="w-8 h-8 object-contain"
+              />
             )}
           </div>
-          
+
           {/* Close button for mobile */}
           {isMobile && (
             <button
@@ -114,7 +120,7 @@ const Sidebar = ({ isCollapsed, isMobile, closeSidebar }) => {
           <button
             key={item.id}
             onClick={() => handleNavClick(item.path)}
-            className={`w-full flex items-center space-x-3 px-4 py-3 rounded-lg transition-colors ${
+            className={`w-full flex items-center space-x-3 px-4 py-3 rounded-none transition-colors ${
               location.pathname === item.path
                 ? 'bg-primary-50 text-primary-600 border-l-4 border-primary-600'
                 : 'text-gray-600 hover:bg-gray-50 hover:text-gray-900'
@@ -161,7 +167,7 @@ const Sidebar = ({ isCollapsed, isMobile, closeSidebar }) => {
               <div className="text-sm font-medium text-gray-900 truncate">
                 Event Organizer
               </div>
-              <div className="text-xs text-gray-500">admin@festhub.com</div>
+              <div className="text-xs text-gray-500">admin@festfiti.com</div>
             </div>
           </div>
         </div>

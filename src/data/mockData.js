@@ -1,4 +1,4 @@
-// Mock data for FestHub MVP - Simulated backend database
+// Mock data for FestFiti MVP - Simulated backend database
 
 export const mockEventDetails = {
   id: "FEST2024",

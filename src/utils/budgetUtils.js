@@ -1,4 +1,4 @@
-// Budget Tracking Utilities for FestHub
+// Budget Tracking Utilities for FestFiti
 // Comprehensive financial management system
 
 // Mock budget data structure

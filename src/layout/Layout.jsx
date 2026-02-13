@@ -82,13 +82,11 @@ const Layout = () => {
               
               {/* Mobile Logo */}
               <div className="flex items-center space-x-2">
-                <div className="w-8 h-8 bg-primary-600 rounded-lg flex items-center justify-center">
-                  <span className="text-white font-bold text-lg">F</span>
-                </div>
-                <div>
-                  <h1 className="text-lg font-bold text-gray-900">FestHub</h1>
-                  <p className="text-xs text-gray-500">Event Management</p>
-                </div>
+                <img
+                  src="/src/assets/fest_fiti_name_logo_black.png"
+                  alt="FestFiti"
+                  className="h-8 object-contain"
+                />
               </div>
             </div>
           </div>
