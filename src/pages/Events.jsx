@@ -129,7 +129,7 @@ const Events = () => {
   };
 
   const handleManageEvent = (event) => {
-    navigate(`/manage-event/${event.id}`);
+    navigate(`/app/manage-event/${event.id}`);
   };
 
   const getEventIcon = (type) => {

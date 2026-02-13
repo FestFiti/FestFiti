@@ -24,49 +24,49 @@ const Sidebar = ({ isCollapsed, isMobile, closeSidebar }) => {
     {
       id: 'dashboard',
       name: 'Dashboard',
-      path: '/dashboard',
+      path: '/app/dashboard',
       icon: LayoutDashboard,
       description: 'Event overview'
     },
     {
       id: 'events',
       name: 'Events',
-      path: '/events',
+      path: '/app/events',
       icon: Calendar,
       description: 'Event management'
     },
     {
       id: 'ticketguard',
       name: 'TicketGuard',
-      path: '/ticketguard',
+      path: '/app/ticketguard',
       icon: Ticket,
       description: 'Ticket validation'
     },
     {
       id: 'vendors',
       name: 'Vendors',
-      path: '/vendors',
+      path: '/app/vendors',
       icon: Users,
       description: 'Vendor management'
     },
     {
       id: 'budget',
       name: 'Budget',
-      path: '/budget',
+      path: '/app/budget',
       icon: DollarSign,
       description: 'Budget tracking'
     },
     {
       id: 'sustainability',
       name: 'Sustainability',
-      path: '/sustainability',
+      path: '/app/sustainability',
       icon: Leaf,
       description: 'Environmental impact'
     },
     {
       id: 'festbuddy',
       name: 'FestBuddy',
-      path: '/festbuddy',
+      path: '/app/festbuddy',
       icon: Bot,
       description: 'AI assistant'
     }

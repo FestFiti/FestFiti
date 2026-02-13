@@ -2,6 +2,8 @@ import React from 'react';
 import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
 import { EventProvider } from './context/EventContext';
 import Layout from './layout/Layout';
+import Landing from './pages/Landing';
+import Login from './pages/Login';
 import Dashboard from './pages/Dashboard';
 import Events from './pages/Events';
 import TicketGuard from './pages/TicketGuard';
@@ -19,8 +21,13 @@ function App() {
       <Router>
         <div className="min-h-screen bg-gray-50">
           <Routes>
-            <Route path="/" element={<Layout />}>
-              <Route index element={<Navigate to="/dashboard" replace />} />
+            {/* Public routes */}
+            <Route path="/" element={<Landing />} />
+            <Route path="/login" element={<Login />} />
+
+            {/* Protected routes */}
+            <Route path="/app" element={<Layout />}>
+              <Route index element={<Navigate to="/app/dashboard" replace />} />
               <Route path="dashboard" element={<Dashboard />} />
               <Route path="events" element={<Events />} />
               <Route path="manage-event/:eventId" element={<ManageEvent />} />
@@ -31,7 +38,7 @@ function App() {
               <Route path="festbuddy" element={<FestBuddy />} />
             </Route>
           </Routes>
-          
+
           {/* Global Chat Window */}
           <ChatWindow />
         </div>
