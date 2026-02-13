@@ -1,0 +1,27 @@
+// Action types for EventContext
+export const ActionTypes = {
+  // Navigation
+  SET_PAGE: 'SET_PAGE',
+  TOGGLE_SIDEBAR: 'TOGGLE_SIDEBAR',
+  
+  // Ticket operations
+  VALIDATE_TICKET: 'VALIDATE_TICKET',
+  SET_VALIDATION_RESULT: 'SET_VALIDATION_RESULT',
+  TOGGLE_SCANNER: 'TOGGLE_SCANNER',
+  
+  // Data updates
+  UPDATE_TICKET: 'UPDATE_TICKET',
+  ADD_FRAUD_LOG: 'ADD_FRAUD_LOG',
+  ADD_CHECK_IN_LOG: 'ADD_CHECK_IN_LOG',
+  
+  // Budget operations
+  UPDATE_BUDGET: 'UPDATE_BUDGET',
+  
+  // Chat operations
+  TOGGLE_CHAT: 'TOGGLE_CHAT',
+  ADD_MESSAGE: 'ADD_MESSAGE',
+  
+  // Notification operations
+  ADD_NOTIFICATION: 'ADD_NOTIFICATION',
+  CLEAR_NOTIFICATIONS: 'CLEAR_NOTIFICATIONS'
+};
