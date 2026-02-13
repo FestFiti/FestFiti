@@ -16,7 +16,8 @@ const initialState = {
   sustainabilityMetrics: mockData.sustainabilityMetrics,
   ticketSales: mockData.ticketSales,
   checkInLogs: mockData.checkInLogs,
-  
+  events: [], // Array to store all events
+
   // Computed values
   ticketStats: {},
   budgetOverview: {},
@@ -186,6 +187,27 @@ const eventReducer = (state, action) => {
         capacityInfo: getCapacityInfo(state.eventDetails.capacity)
       };
     
+    // Event management cases
+    case ActionTypes.ADD_EVENT:
+      return {
+        ...state,
+        events: [...state.events, action.payload]
+      };
+
+    case ActionTypes.UPDATE_EVENT:
+      return {
+        ...state,
+        events: state.events.map(event =>
+          event.id === action.payload.id ? { ...event, ...action.payload } : event
+        )
+      };
+
+    case ActionTypes.DELETE_EVENT:
+      return {
+        ...state,
+        events: state.events.filter(event => event.id !== action.payload)
+      };
+
     default:
       return state;
   }
@@ -290,6 +312,37 @@ export const EventProvider = ({ children }) => {
     // Refresh
     refreshStats: () => {
       dispatch({ type: ActionTypes.REFRESH_STATS });
+    },
+
+    // Event management
+    addEvent: (eventData) => {
+      dispatch({ type: ActionTypes.ADD_EVENT, payload: eventData });
+      actions.addNotification({
+        type: 'success',
+        title: 'Event Created',
+        message: `${eventData.name} has been created successfully`,
+        timestamp: new Date().toISOString()
+      });
+    },
+
+    updateEvent: (eventData) => {
+      dispatch({ type: ActionTypes.UPDATE_EVENT, payload: eventData });
+      actions.addNotification({
+        type: 'success',
+        title: 'Event Updated',
+        message: `${eventData.name} has been updated`,
+        timestamp: new Date().toISOString()
+      });
+    },
+
+    deleteEvent: (eventId) => {
+      dispatch({ type: ActionTypes.DELETE_EVENT, payload: eventId });
+      actions.addNotification({
+        type: 'success',
+        title: 'Event Deleted',
+        message: 'Event has been deleted successfully',
+        timestamp: new Date().toISOString()
+      });
     }
   };
   

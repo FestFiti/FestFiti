@@ -7,7 +7,6 @@ import {
   Users, 
   Ticket,
   Clock,
-  Edit,
   Plus,
   TrendingUp,
   AlertTriangle,
@@ -26,7 +25,7 @@ import {
 } from '../utils/eventUtils';
 
 const Events = () => {
-  const { state } = useEvent();
+  const { state, actions } = useEvent();
   const navigate = useNavigate();
   const [showCreateModal, setShowCreateModal] = useState(false);
   const [selectedEvent, setSelectedEvent] = useState(null);
@@ -40,10 +39,12 @@ const Events = () => {
     baseBudget: '',
     ticketPrice: ''
   });
+
   const [formErrors, setFormErrors] = useState([]);
 
-  // Get all events (current + mock upcoming)
+  // Get all events (current + stored events + mock upcoming)
   const allEvents = [
+    // Current main event from state
     {
       ...state.eventDetails,
       id: 'EVT001',
@@ -55,6 +56,9 @@ const Events = () => {
       sustainabilityScore: state.sustainabilityMetrics.sustainabilityScore,
       totalExpenses: state.budgetOverview.used
     },
+    // Events created by user stored in state
+    ...state.events,
+    // Mock upcoming events for demo purposes
     ...[
       {
         id: 'EVT002',
@@ -103,9 +107,13 @@ const Events = () => {
       return;
     }
 
+    // Create new event using utility function
     const newEvent = createNewEvent(formData);
-    console.log('New event created:', newEvent);
-    
+
+    // Add event to state using context action
+    actions.addEvent(newEvent);
+
+    // Reset form
     setFormData({
       name: '',
       type: EVENT_TYPES.CONCERT,
