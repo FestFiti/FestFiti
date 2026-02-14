@@ -4,6 +4,9 @@ import { EventProvider } from './context/EventContext';
 import Layout from './layout/Layout';
 import Landing from './pages/Landing';
 import Login from './pages/Login';
+import PublicEvents from './pages/PublicEvents';
+import EventDetails from './pages/EventDetails';
+import BookEvent from './pages/BookEvent';
 import Dashboard from './pages/Dashboard';
 import Events from './pages/Events';
 import TicketGuard from './pages/TicketGuard';
@@ -24,8 +27,11 @@ function App() {
             {/* Public routes */}
             <Route path="/" element={<Landing />} />
             <Route path="/login" element={<Login />} />
+            <Route path="/events" element={<PublicEvents />} />
+            <Route path="/event/:eventId" element={<EventDetails />} />
+            <Route path="/book/:eventId" element={<BookEvent />} />
 
-            {/* Protected routes */}
+            {/* Protected routes - Organizer Dashboard */}
             <Route path="/app" element={<Layout />}>
               <Route index element={<Navigate to="/app/dashboard" replace />} />
               <Route path="dashboard" element={<Dashboard />} />
